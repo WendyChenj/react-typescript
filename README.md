@@ -14,6 +14,6 @@ This project was built using TypeScript, styled-components, react (react hook), 
 
 ### Edit Task
 
-<img src="https://github.com/WendyChenj/react-typescript/blob/master/screenshots/add-new-task.png" width="450">
+<img src="https://github.com/WendyChenj/react-typescript/blob/master/screenshots/edit-task.png" width="450">
 
 @ Happy coding - WENDY
