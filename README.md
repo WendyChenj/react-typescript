@@ -2,6 +2,8 @@
 
 The todo app allows users to check their task lists based on the task state including todo, in progress and done. Also, users can add new tasks and edit tasks according to their progress!
 
+[https://gifted-ptolemy-72f282.netlify.app]
+
 This project was built using TypeScript, styled-components, react (react hook), react-router and redux.
 
 ### Todo Task List
