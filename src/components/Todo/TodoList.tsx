@@ -5,16 +5,16 @@ import {
   ItemsListContainer,
   ItemList,
 } from '../../styles/Items';
-import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-interface Props {
-  todos: Todo[];
-  toggleTodo: ToggleTodo;
+interface TodoState {
+  todoTasks: Task[];
 }
 
-const TodoList: React.FC<Props> = ({ todos, toggleTodo }: Props) => {
-  const history = useHistory();
-  console.log(history);
+const TodoList = () => {
+  const todos = useSelector((state: TodoState) => state.todoTasks);
+
+  console.log(todos);
 
   return (
     <ItemsContainer>
@@ -22,7 +22,7 @@ const TodoList: React.FC<Props> = ({ todos, toggleTodo }: Props) => {
         {todos.map((todo) => {
           return (
             <ItemList key={todo.text}>
-              <TodoListItem todo={todo} toggleTodo={toggleTodo} />
+              <TodoListItem todo={todo} />
             </ItemList>
           );
         })}
