@@ -18,6 +18,8 @@ export const InputFormContainer = styled.form`
   padding: 32px 32px;
   background-color: white;
   font-size: 1.25rem;
+  display: flex;
+  flex-flow: column nowrap;
 `;
 
 export const InputTask = styled.input`
@@ -29,16 +31,21 @@ export const InputTask = styled.input`
   margin: 32px 0;
 `;
 
-export const InputButton = styled.button`
+export const ButtonGroup = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+`;
+
+export const InputButton = styled.button<{ disabled: boolean }>`
   border: none;
   border-radius: 5px;
-  background-color: #0257d6;
+  background-color: ${(props) => (props.disabled ? '#808080' : '#0257d6')};
   padding: 8px 16px;
   font-size: 1rem;
   color: white;
   &:hover {
-    cursor: pointer;
-    background-color: #011f4b;
+    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+    background-color: ${(props) => (props.disabled ? '#808080' : '#011f4b')};
   }
 `;
 

@@ -1,26 +1,19 @@
 import React from 'react';
+import { TodoItemContainer } from '../../styles/Items';
+import { Edit } from '@styled-icons/boxicons-regular/Edit';
 
 // pass Props as generic
 interface Props {
-  todo: Todo;
-  toggleTodo: ToggleTodo;
+  todo: Task;
 }
 
 // generic type
-const TodoListItem: React.FC<Props> = ({ todo, toggleTodo }: Props) => {
+const TodoListItem: React.FC<Props> = ({ todo }: Props) => {
   return (
-    <div>
-      <label
-        style={{ textDecoration: todo.complete ? 'line-through' : undefined }}
-      >
-        <input
-          type="checkbox"
-          checked={todo.complete}
-          onChange={() => toggleTodo(todo)}
-        />{' '}
-        {todo.text}
-      </label>
-    </div>
+    <TodoItemContainer>
+      {todo.text}
+      <Edit size={24} />
+    </TodoItemContainer>
   );
 };
 

@@ -6,11 +6,18 @@ export const ItemsContainer = styled.div`
 
 export const ItemsListContainer = styled.ul`
   font-size: 1.5rem;
-  list-style: none;
-  padding-inline-start: 0;
+  list-style: circle;
+  padding-inline-start: 16px;
 `;
 
 export const ItemList = styled.li`
-  padding: 16px 0;
+  padding: 16px 10px;
   border-bottom: 1px solid #d3d3d3;
+`;
+
+export const TodoItemContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 `;

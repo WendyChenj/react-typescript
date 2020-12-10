@@ -5,20 +5,26 @@ import {
   InputButton,
   InputFormContainer,
   InputCancelButton,
+  ButtonGroup,
 } from '../../styles/InputTask';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 interface Props {
-  addTodo: AddTodo;
   closeNewTask: CloseNewTask;
 }
 
-const AddTodoItem: React.FC<Props> = ({ addTodo, closeNewTask }: Props) => {
+const AddTodoItem: React.FC<Props> = ({ closeNewTask }: Props) => {
   const [text, setText] = useState('');
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const submitHandler = (e: React.MouseEvent) => {
     e.preventDefault();
-    addTodo(text);
+    dispatch({ type: 'ADD_NEW_TASK', payload: { text: text, state: 'todo' } });
     setText('');
+    closeNewTask(e);
+    history.push('/todo');
   };
 
   return (
@@ -31,8 +37,17 @@ const AddTodoItem: React.FC<Props> = ({ addTodo, closeNewTask }: Props) => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <InputButton onClick={submitHandler}>Submit</InputButton>
-        <InputCancelButton onClick={closeNewTask}>Cancel</InputCancelButton>
+        <ButtonGroup>
+          <InputButton
+            onClick={submitHandler}
+            disabled={text === '' ? true : false}
+          >
+            Submit
+          </InputButton>
+          <InputCancelButton onClick={closeNewTask} disabled={false}>
+            Cancel
+          </InputCancelButton>
+        </ButtonGroup>
       </InputFormContainer>
     </InputContainer>
   );
