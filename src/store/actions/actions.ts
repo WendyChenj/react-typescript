@@ -1,10 +1,4 @@
-import {
-  ADD_NEW_TASK,
-  MOVE_TO_TODO,
-  MOVE_TO_INPROGRESS,
-  MOVE_TO_DONE,
-  ActionTypes,
-} from './types';
+import { ADD_NEW_TASK, TASK_EDIT_STATE, ActionTypes } from './types';
 
 export function addNewTask(newTask: Task): ActionTypes {
   return {
@@ -13,23 +7,15 @@ export function addNewTask(newTask: Task): ActionTypes {
   };
 }
 
-export function moveTodo(task: Task): ActionTypes {
+export function taskEditState(
+  task: Task,
+  newState: 'todo' | 'inProgress' | 'done',
+  newText: string,
+): ActionTypes {
   return {
-    type: MOVE_TO_TODO,
+    type: TASK_EDIT_STATE,
     payload: task,
-  };
-}
-
-export function moveInProgress(task: Task): ActionTypes {
-  return {
-    type: MOVE_TO_INPROGRESS,
-    payload: task,
-  };
-}
-
-export function moveDone(task: Task): ActionTypes {
-  return {
-    type: MOVE_TO_DONE,
-    payload: task,
+    newState: newState,
+    newText: newText,
   };
 }

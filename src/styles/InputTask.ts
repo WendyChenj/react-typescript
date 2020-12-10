@@ -56,3 +56,15 @@ export const InputCancelButton = styled(InputButton)`
     background-color: #ba423c;
   }
 `;
+
+export const Select = styled.select`
+  padding: 10px 16px;
+  width: 30%;
+  margin: -16px 0 16px;
+  font-size: 1rem;
+
+  option {
+    color: black;
+    background-color: white;
+  }
+`;

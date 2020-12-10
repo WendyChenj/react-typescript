@@ -4,36 +4,29 @@ import {
   TasksState,
   ActionTypes,
   ADD_NEW_TASK,
-  MOVE_TO_TODO,
-  MOVE_TO_INPROGRESS,
-  MOVE_TO_DONE,
+  TASK_EDIT_STATE,
 } from '../actions/types';
 
-const initialTodoTasks: Task[] = [
+const initialTasks: Task[] = [
   {
+    id: 1,
     text: 'Walk the dog',
     state: 'todo',
   },
-];
-
-const initialProgressTasks: Task[] = [
   {
+    id: 2,
     text: 'Write app',
     state: 'inProgress',
   },
-];
-
-const initialDoneTasks: Task[] = [
   {
+    id: 3,
     text: 'Personal Website: www.hiwendychen.com/',
     state: 'done',
   },
 ];
 
 const initialState: TasksState = {
-  todoTasks: initialTodoTasks,
-  inProgressTasks: initialProgressTasks,
-  doneTasks: initialDoneTasks,
+  tasks: initialTasks,
 };
 
 export function reducer(state = initialState, action: ActionTypes): TasksState {
@@ -41,22 +34,19 @@ export function reducer(state = initialState, action: ActionTypes): TasksState {
     case ADD_NEW_TASK:
       return {
         ...state,
-        todoTasks: [...state.todoTasks, action.payload],
+        tasks: [...state.tasks].concat(action.payload),
       };
-    case MOVE_TO_TODO:
+    case TASK_EDIT_STATE:
+      const newTask: Task = {
+        id: action.payload.id,
+        text: action.newText,
+        state: action.newState,
+      };
       return {
         ...state,
-        todoTasks: [...state.todoTasks, action.payload],
-      };
-    case MOVE_TO_INPROGRESS:
-      return {
-        ...state,
-        inProgressTasks: [...state.inProgressTasks, action.payload],
-      };
-    case MOVE_TO_DONE:
-      return {
-        ...state,
-        doneTasks: [...state.doneTasks, action.payload],
+        tasks: [...state.tasks]
+          .filter((task) => task.id !== action.payload.id)
+          .concat(newTask),
       };
     default:
       return state;

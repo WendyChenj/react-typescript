@@ -8,11 +8,13 @@ import TodoListItem from '../Todo/TodoListItem';
 import { useSelector } from 'react-redux';
 
 interface doneTasksState {
-  doneTasks: Task[];
+  tasks: Task[];
 }
 
 const Done = () => {
-  const doneTodos = useSelector((state: doneTasksState) => state.doneTasks);
+  const doneTodos = useSelector((state: doneTasksState) =>
+    state.tasks.filter((task) => task.state === 'done'),
+  );
   return (
     <ItemsContainer>
       <ItemsListContainer>

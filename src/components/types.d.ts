@@ -2,6 +2,7 @@
 // won't need to explicitly import ot export them.
 
 interface Task {
+  id: number;
   text: string;
   state: 'todo' | 'inProgress' | 'done';
 }
