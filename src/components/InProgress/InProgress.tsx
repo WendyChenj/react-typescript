@@ -8,12 +8,12 @@ import TodoListItem from '../Todo/TodoListItem';
 import { useSelector } from 'react-redux';
 
 interface inProgressState {
-  inProgressTasks: Task[];
+  tasks: Task[];
 }
 
 const InProgress = () => {
-  const inProgressTodos = useSelector(
-    (state: inProgressState) => state.inProgressTasks,
+  const inProgressTodos = useSelector((state: inProgressState) =>
+    state.tasks.filter((task) => task.state === 'inProgress'),
   );
   return (
     <ItemsContainer>

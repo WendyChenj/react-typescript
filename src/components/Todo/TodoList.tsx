@@ -8,11 +8,13 @@ import {
 import { useSelector } from 'react-redux';
 
 interface TodoState {
-  todoTasks: Task[];
+  tasks: Task[];
 }
 
 const TodoList = () => {
-  const todos = useSelector((state: TodoState) => state.todoTasks);
+  const todos = useSelector((state: TodoState) =>
+    state.tasks.filter((task) => task.state === 'todo'),
+  );
 
   console.log(todos);
 

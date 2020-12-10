@@ -13,10 +13,3 @@ const Modal = styled.div<{ show: boolean }>`
 `;
 
 export default Modal;
-
-export const CloseModalButton = styled.button`
-  top: 0;
-  position: 0;
-  border: none;
-  background: transparent;
-`;

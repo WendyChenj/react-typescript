@@ -21,7 +21,14 @@ const AddTodoItem: React.FC<Props> = ({ closeNewTask }: Props) => {
 
   const submitHandler = (e: React.MouseEvent) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_NEW_TASK', payload: { text: text, state: 'todo' } });
+    dispatch({
+      type: 'ADD_NEW_TASK',
+      payload: {
+        id: Math.floor(Math.random() * (300 - 3) + 3),
+        text: text,
+        state: 'todo',
+      },
+    });
     setText('');
     closeNewTask(e);
     history.push('/todo');

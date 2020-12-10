@@ -21,3 +21,11 @@ export const TodoItemContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const EditButton = styled.button`
+  border: none;
+  background-color: white;
+  &:hover {
+    cursor: pointer;
+  }
+`;
